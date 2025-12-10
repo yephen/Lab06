@@ -1,0 +1,47 @@
+services:
+  mc:
+      image: itzg/minecraft-server
+      tty: true
+      stdin_open: true
+      ports:
+        - "25565:25565"
+      environment:
+        EULA: "TRUE"
+      volumes:
+        # attach the relative directory 'data' to the container's /data path
+        - ./data:/data
+
+  db:
+    image: adrianmusante/pocketbase:latest
+    container_name: pocketbase
+    environment:
+      - POCKETBASE_PORT_NUMBER=3000
+      - POCKETBASE_ADMIN_EMAIL=jayva001@ucr.edu
+      - POCKETBASE_ADMIN_PASSWORD=12345678
+    ports:
+      - "3000:3000"
+      - "8090:8090"
+    volumes:
+      - pocketbase_data:/pocketbase
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:3000/api/health" ]
+      interval: 2s
+      timeout: 10s
+      retries: 10
+  frontend:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
+
+volumes:
+  data:
+    driver: local
+  pocketbase_data:
+    driver: local
+
+networks:
+  default:
+    name: pocketbase_network
+    driver: bridge
