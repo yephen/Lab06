@@ -1,0 +1,11 @@
+[2025-12-10 06:07:17] [/workspaces/Lab06] source .devcontainer/shell.sh
+[2025-12-10 06:13:16] [/workspaces/Lab06] docker-compose up --build -d
+[2025-12-10 06:14:46] [/workspaces/Lab06] docker-compose up --build -d
+[2025-12-10 06:15:08] [/workspaces/Lab06] docker-compose down
+[2025-12-10 06:15:19] [/workspaces/Lab06] docker-compose build frontend
+[2025-12-10 06:30:49] [/workspaces/Lab06] docker-compose stop <container name>
+[2025-12-10 06:30:52] [/workspaces/Lab06] docker-compose stop <container name>
+[2025-12-10 06:33:25] [/workspaces/Lab06] docker-compose up --build -d
+[2025-12-10 06:34:03] [/workspaces/Lab06] docker-compose start <container name>
+[2025-12-10 06:34:08] [/workspaces/Lab06] docker-compose start
+[2025-12-10 06:35:03] [/workspaces/Lab06] git commit -m "requirements.txt couldnt be installed"
